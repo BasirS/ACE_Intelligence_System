@@ -10,6 +10,7 @@ import Hero from '../components/sections/Hero.astro';
 import Card from '../components/ui/Card.astro';
 import Button from '../components/ui/Button.astro';
 import DataVisualizationLayout from '../components/layout/DataVisualizationLayout.astro';
+import Footer from '../components/shared/Footer.astro';
 
 const pageTitle = 'Research Methodology - ClearLane Initiative';
 const pageDescription = 'Transparent documentation of our data science approach: how we analyzed 3.7 million MTA violation records to identify enforcement failures affecting CUNY students.';
@@ -125,27 +126,7 @@ const codeRepositories = [
       variant="data"
     >
       <div slot="visual">
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-          <h3 class="text-lg font-semibold text-white mb-4">Analysis Pipeline</h3>
-          <div class="space-y-3">
-            <div class="flex items-center text-sm text-white/90">
-              <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center mr-3 text-xs font-semibold">1</div>
-              <span>3.7M violation records → spatial mapping</span>
-            </div>
-            <div class="flex items-center text-sm text-white/90">
-              <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center mr-3 text-xs font-semibold">2</div>
-              <span>Temporal pattern analysis → peak hours</span>
-            </div>
-            <div class="flex items-center text-sm text-white/90">
-              <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center mr-3 text-xs font-semibold">3</div>
-              <span>CUNY proximity → student impact</span>
-            </div>
-            <div class="flex items-center text-sm text-white/90">
-              <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center mr-3 text-xs font-semibold">4</div>
-              <span>Enforcement paradox → solution targets</span>
-            </div>
-          </div>
-        </div>
+        <!-- Removed glassmorphism box as requested -->
       </div>
     </Hero>
 
@@ -216,7 +197,7 @@ const codeRepositories = [
       >
         <div class="space-y-12">
           {analysisSteps.map((step, index) => (
-            <div key={step.step} class="relative">
+            <div class="relative">
               {/* Connection line */}
               {index < analysisSteps.length - 1 && (
                 <div class="absolute left-6 top-16 w-0.5 h-16 bg-gray-300 hidden sm:block"></div>
@@ -304,23 +285,6 @@ const codeRepositories = [
           ))}
         </div>
 
-        <div class="bg-primary/5 rounded-2xl p-8 text-center border border-primary/10">
-          <h3 class="text-xl font-semibold text-gray-900 mb-4">
-            Academic Collaboration Welcome
-          </h3>
-          <p class="text-gray-600 mb-6">
-            We encourage academic researchers to build on our work. All data processing code,
-            statistical methods, and visualization components are documented for replication.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/contact" variant="primary">
-              📧 Collaborate With Us
-            </Button>
-            <Button href="/findings" variant="secondary">
-              📊 View Results
-            </Button>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -394,6 +358,9 @@ const codeRepositories = [
       </div>
     </section>
   </main>
+
+  <!-- Footer -->
+  <Footer />
 </BaseLayout>
 
 <script>

@@ -54,7 +54,7 @@ const structuredData = {
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -81,6 +81,7 @@ const structuredData = {
   <meta name="twitter:image" content={ogImage} />
 
   <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -93,7 +94,7 @@ const structuredData = {
 
   <!-- Theme and accessibility -->
   <meta name="theme-color" content="#2563eb" />
-  <meta name="color-scheme" content="light" />
+  <meta name="color-scheme" content="light dark" />
 
   <!-- Performance and security -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
@@ -104,6 +105,23 @@ const structuredData = {
 
   <!-- Analytics placeholder -->
   <!-- Google Analytics would go here in production -->
+
+  <!-- Theme initialization script - runs before page load to prevent flash -->
+  <script is:inline>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const shouldUseDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      
+      if (shouldUseDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
 
   <!-- Global styles -->
   <style is:global>
@@ -332,11 +350,31 @@ const structuredData = {
       }
     }
 
-    /* Dark mode preparation (not implemented but structure ready) */
+    /* Dark mode styles */
+    .dark {
+      color-scheme: dark;
+    }
+
+    .dark :root {
+      --color-background: #0f172a;
+      --color-background-muted: #1e293b;
+      --color-background-inverse: #f8fafc;
+      --color-text-primary: #f1f5f9;
+      --color-text-secondary: #cbd5e1;
+      --color-text-muted: #94a3b8;
+      --color-text-inverse: #0f172a;
+      --color-border: #334155;
+      --color-border-muted: #475569;
+    }
+
+    .dark body {
+      background: var(--color-background);
+      color: var(--color-text-primary);
+    }
+
     @media (prefers-color-scheme: dark) {
       :root {
         color-scheme: dark;
-        /* Dark mode colors would go here */
       }
     }
 

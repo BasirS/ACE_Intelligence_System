@@ -10,6 +10,7 @@ import Hero from '../components/sections/Hero.astro';
 import Card from '../components/ui/Card.astro';
 import Button from '../components/ui/Button.astro';
 import DataVisualizationLayout from '../components/layout/DataVisualizationLayout.astro';
+import Footer from '../components/shared/Footer.astro';
 
 const pageTitle = 'ClearLane Solution Framework - Targeted Bus Enforcement';
 const pageDescription = 'The ClearLane Initiative: A data-driven approach to bus enforcement that solves 80% of student transit problems with 20% of current resources.';
@@ -431,10 +432,10 @@ const policyRecommendations = [
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/contact" variant="primary" size="lg">
+            <Button href="/contact" variant="outline" size="lg">
               📧 Contact MTA Officials
             </Button>
-            <Button href="/methodology" variant="secondary" size="lg">
+            <Button href="/ACE_Intelligence_System/methodology" variant="outline" size="lg">
               📊 Review the Evidence
             </Button>
             <Button href="/#route-analyzer" variant="outline" size="lg">
@@ -446,12 +447,12 @@ const policyRecommendations = [
     </section>
 
     <!-- Success Stories Preview -->
-    <section class="py-16 bg-primary text-white">
+    <section class="py-16 bg-primary-600 text-white">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl font-bold mb-6">
           ClearLane Success Is Student Success
         </h2>
-        <p class="text-xl text-primary-light mb-8 max-w-2xl mx-auto">
+        <p class="text-xl text-primary-200 mb-8 max-w-2xl mx-auto">
           When buses run on time, students thrive. When enforcement is targeted and effective,
           the "rolling study hall" becomes a reality for 270,000 CUNY students.
         </p>
@@ -461,20 +462,19 @@ const policyRecommendations = [
             "My BxM10 commute is when I get my best studying done. When the bus is delayed,
             I don't just lose travel time, I lose my most productive hours of the day."
           </blockquote>
-          <cite class="text-primary-light">— CUNY Student, Baruch College</cite>
+          <cite class="text-primary-200">— CUNY Student, Baruch College</cite>
         </div>
 
-        <p class="text-primary-light mb-8">
+        <p class="text-lg text-primary-200 mb-8">
           This isn't just about transportation. It's about educational equity, student success,
           and the recognition that for working students, buses are educational infrastructure.
         </p>
-
-        <Button href="/about" variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-primary">
-          👥 Meet the Team Behind ClearLane
-        </Button>
       </div>
     </section>
   </main>
+
+  <!-- Footer -->
+  <Footer />
 </BaseLayout>
 
 <script>

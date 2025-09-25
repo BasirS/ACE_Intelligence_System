@@ -11,7 +11,7 @@ export default defineConfig({
       applyBaseStyles: false, // We'll handle base styles ourselves
     }),
     react({
-      include: ['**/react/*', '**/charts/*', '**/visualizations/*']
+      include: ['**/react/*', '**/charts/*', '**/visualizations/*', '**/interactive/*']
     })
   ],
   output: 'static',

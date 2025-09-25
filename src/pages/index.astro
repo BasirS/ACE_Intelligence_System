@@ -17,7 +17,7 @@ import DataVisualizationLayout from '../components/layout/DataVisualizationLayou
 const heroStats = [
   {
     value: '270,000+',
-    label: 'CUNY Students',
+    label: 'Students',
     description: 'Depend on NYC buses daily'
   },
   {
@@ -77,13 +77,13 @@ const solutionComponents = [
 ];
 
 const pageTitle = 'My Bus is My Study Hall - ClearLane Initiative';
-const pageDescription = 'How a CUNY student transformed a 2-hour BxM10 commute into a rolling study hall, and why targeted bus enforcement is crucial for educational equity.';
+const pageDescription = 'How a student transformed a 2-hour BxM10 commute into a rolling study hall, and why targeted bus enforcement is crucial for educational equity.';
 ---
 
 <BaseLayout
   title={pageTitle}
   description={pageDescription}
-  keywords="rolling study hall, BxM10, CUNY student commute, bus enforcement, educational equity"
+  keywords="rolling study hall, BxM10, student commute, bus enforcement, educational equity"
 >
   <Header currentPath="/" />
 
@@ -134,13 +134,13 @@ const pageDescription = 'How a CUNY student transformed a 2-hour BxM10 commute i
     </Hero>
 
     <!-- Problem Definition Section -->
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-white dark:bg-gray-900">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
             Buses Are Educational Infrastructure
           </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             For working students who can't afford alternatives, reliable transit isn't a convenience,
             it's the foundation of academic success. Current enforcement systems fail to protect this vital study time.
           </p>
@@ -156,7 +156,7 @@ const pageDescription = 'How a CUNY student transformed a 2-hour BxM10 commute i
             >
               <div class="text-4xl mb-4 emoji-container" role="img" aria-label={`${finding.title} icon`}>
           {finding.title === 'Peak Violation Hours' ? '🚌' : 
-           finding.title === 'CUNY Campus Impact' ? '🏫' : 
+           finding.title === 'Campus Impact' ? '🏫' : 
            finding.title === 'Enforcement Paradox' ? '⚖️' : 
            finding.title === 'Predictive Insights' ? '📊' : finding.icon}
         </div>
@@ -169,7 +169,7 @@ const pageDescription = 'How a CUNY student transformed a 2-hour BxM10 commute i
         </div>
 
         <div class="text-center">
-          <Button href="/methodology" variant="outline" size="lg">
+          <Button href="/ACE_Intelligence_System/methodology" variant="outline" size="lg">
             <span role="img" aria-label="Chart icon">📊</span> See Our Research Methodology
           </Button>
         </div>
@@ -177,7 +177,7 @@ const pageDescription = 'How a CUNY student transformed a 2-hour BxM10 commute i
     </section>
 
     <!-- Data Investigation Section -->
-    <section id="findings" class="py-16 bg-gray-50 print-break-before">
+    <section id="findings" class="py-16 bg-gray-50 dark:bg-gray-800 print-break-before">
       <DataVisualizationLayout
         title="What the Data Reveals"
         description="Our analysis of 3.7 million violation records shows clear patterns that can guide targeted enforcement."
@@ -201,11 +201,16 @@ const pageDescription = 'How a CUNY student transformed a 2-hour BxM10 commute i
             Where Student Commutes Are Most Vulnerable
           </h3>
           <p class="text-lg text-gray-600 mb-8">
-            Bus violations are concentrated at specific locations near CUNY campuses.
+            Bus violations are concentrated at specific locations near college campuses.
             This geographic clustering makes targeted enforcement both feasible and effective.
           </p>
-          <div class="w-full h-96 bg-gray-100 rounded-lg flex items-center justify-center">
-            <p class="text-gray-600">Violation heatmap visualization would appear here</p>
+          <div class="w-full rounded-lg overflow-hidden border border-gray-200">
+            <iframe
+              src="/ACE_Intelligence_System/plots/enhanced_spatial_intelligence_map.html"
+              title="Enhanced Spatial Intelligence Map"
+              class="w-full h-[32rem] bg-white"
+              loading="lazy"
+            ></iframe>
           </div>
         </div>
 
@@ -215,14 +220,14 @@ const pageDescription = 'How a CUNY student transformed a 2-hour BxM10 commute i
             Ready to Dive Deeper?
           </h3>
           <p class="text-lg text-gray-600 mb-6">
-            Explore our complete analysis, including CUNY proximity studies,
+            Explore our complete analysis, including campus proximity studies,
             enforcement paradox calculations, and the full ClearLane solution framework.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/findings" variant="primary" size="lg">
+            <Button href="/ACE_Intelligence_System/findings" variant="outline" size="lg">
               📈 View Complete Analysis
             </Button>
-            <Button href="/solution" variant="secondary" size="lg">
+            <Button href="/ACE_Intelligence_System/solution" variant="outline" size="lg">
               💡 See Our Solution
             </Button>
           </div>
@@ -231,13 +236,13 @@ const pageDescription = 'How a CUNY student transformed a 2-hour BxM10 commute i
     </section>
 
     <!-- Personal Route Analyzer -->
-    <section id="route-analyzer" class="py-16 bg-white">
+    <section id="route-analyzer" class="py-16 bg-white dark:bg-gray-900">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
             How Do Violations Affect Your Commute?
           </h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Enter your bus route and travel times to see how enforcement failures impact your daily journey
             and study time. Your data helps strengthen the case for ClearLane.
           </p>
@@ -247,108 +252,124 @@ const pageDescription = 'How a CUNY student transformed a 2-hour BxM10 commute i
       </div>
     </section>
 
-    <!-- Solution Preview -->
-    <section class="py-16 bg-primary text-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-bold mb-6">
-            The ClearLane Solution
-          </h2>
-          <p class="text-xl text-primary-light max-w-3xl mx-auto">
-            Targeted, data-driven enforcement that solves 80% of the problem with 20% of current resources.
-            Proven effective, ready to scale.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {solutionComponents.map((component, index) => (
-            <div key={component.title} class="text-center">
-              <div class="text-5xl mb-6 emoji-container" role="img" aria-label={`${component.title} icon`}>
-                {component.title === 'Data-Driven Enforcement' ? '📈' : 
-                 component.title === 'Student-Focused Design' ? '🎓' : 
-                 component.title === 'Scalable Implementation' ? '⚡' : component.icon}
-              </div>
-              <h3 class="text-xl font-semibold mb-4">{component.title}</h3>
-              <p class="text-primary-light">{component.description}</p>
-            </div>
-          ))}
-        </div>
-
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
-          <h3 class="text-2xl font-bold mb-4">Expected Impact</h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div>
-              <div class="text-3xl font-bold">40%</div>
-              <div class="text-primary-light">Violation Reduction</div>
-            </div>
-            <div>
-              <div class="text-3xl font-bold">12%</div>
-              <div class="text-primary-light">Speed Improvement</div>
-            </div>
-            <div>
-              <div class="text-3xl font-bold">8.7M</div>
-              <div class="text-primary-light">Student Hours Saved</div>
-            </div>
-          </div>
-
-          <Button href="/solution" variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-primary">
-            📋 View Complete Solution Framework
+    <!-- Dashboard Teaser -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+          Explore Live Dashboards
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          Dive deeper into the data with Albert's interactive Streamlit dashboards. 
+          See real-time analysis of violations, bus speeds, and campus impacts.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/ACE_Intelligence_System/dashboard" variant="outline" size="lg">
+            📊 View Dashboards
+          </Button>
+          <Button href="https://jujutsuquery-mta-analytics.streamlit.app/" variant="outline" size="lg">
+            🚀 Open Streamlit
           </Button>
         </div>
       </div>
     </section>
 
-    <!-- Call to Action Section -->
-    <section class="py-16 bg-secondary text-white print-break-before">
+
+
+    <!-- Datathon Questions Section -->
+    <section class="py-16 bg-primary-600 text-white">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-6">
-          Your Commute Matters. Your Voice Matters.
+        <h2 class="text-3xl sm:text-4xl font-bold mb-8">
+          The Three Questions Driving ClearLane
         </h2>
-        <p class="text-xl text-secondary-light mb-8 max-w-2xl mx-auto">
-          Join the movement to protect student study time through data-driven transit enforcement.
-          Every route analysis strengthens our advocacy.
+        <p class="text-xl text-primary-200 mb-12 max-w-2xl mx-auto">
+          As part of the 2025 MTA Datathon, we address critical questions about transit equity and enforcement effectiveness.
         </p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-center p-6">
-            <div class="text-3xl mb-4 emoji-container" role="img" aria-label="Email icon">✉️</div>
-            <h3 class="font-semibold mb-2">Contact Officials</h3>
-            <p class="text-sm text-secondary-light mb-4">
-              Pre-written emails with your route data
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+            <div class="text-2xl font-bold text-yellow-300 mb-4">Question 1</div>
+            <h3 class="text-xl font-semibold mb-4">When do violations most impact students?</h3>
+            <p class="text-primary-light text-sm">
+              Peak violations occur during 7-10 AM weekdays, directly disrupting the "rolling study hall" time that working students depend on.
             </p>
-            <Button href="/contact" variant="ghost" size="sm" className="text-white border-white">
-              Send Message
-            </Button>
-          </Card>
+          </div>
 
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-center p-6">
-            <div class="text-3xl mb-4 emoji-container" role="img" aria-label="Mobile phone icon">📲</div>
-            <h3 class="font-semibold mb-2">Share Your Story</h3>
-            <p class="text-sm text-secondary-light mb-4">
-              Add your voice to our advocacy
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+            <div class="text-2xl font-bold text-yellow-300 mb-4">Question 2</div>
+            <h3 class="text-xl font-semibold mb-4">Where should enforcement be prioritized?</h3>
+            <p class="text-primary-light text-sm">
+              90% of student-impacting violations occur at just 90 bus stops across NYC, making targeted enforcement both feasible and effective.
             </p>
-            <Button href="/contact#share-story" variant="ghost" size="sm" className="text-white border-white">
-              Share Story
-            </Button>
-          </Card>
+          </div>
 
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-center p-6">
-            <div class="text-3xl mb-4 emoji-container" role="img" aria-label="People icon">🤝</div>
-            <h3 class="font-semibold mb-2">Join the Campaign</h3>
-            <p class="text-sm text-secondary-light mb-4">
-              Connect with fellow advocates
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+            <div class="text-2xl font-bold text-yellow-300 mb-4">Question 3</div>
+            <h3 class="text-xl font-semibold mb-4">What ROI can targeted enforcement achieve?</h3>
+            <p class="text-primary-light text-sm">
+              ClearLane projects 12% speed improvement and 8.7M student hours saved annually through data-driven enforcement.
             </p>
-            <Button href="/about#team" variant="ghost" size="sm" className="text-white border-white">
-              Get Involved
-            </Button>
-          </Card>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- Three Datathon Questions -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+        Three Key Datathon Questions
+      </h2>
+      <div class="space-y-6">
+        <ul class="space-y-8">
+          <li class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+              1. Students & Bus Speeds
+            </h3>
+            <p class="text-gray-800 dark:text-gray-200 mb-3">
+              How do bus lane violations specifically impact student commute times and their ability to use travel time for studying ("rolling study halls")?
+            </p>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-3 mt-3">
+              <p class="text-blue-900 font-medium text-sm">
+                <strong>Solution:</strong> Student-serving routes show -3.2% average speed decline despite 890,228 violations, with 621,101 occurring during class hours (8 AM - 5 PM).
+              </p>
+            </div>
+          </li>
+
+          <li class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+              2. Exempt Vehicle Repeat Offenders
+            </h3>
+            <p class="text-gray-800 dark:text-gray-200 mb-3">
+              Which exempt vehicles (buses, emergency vehicles, etc.) are chronic violators of bus lanes, and what patterns emerge from their repeat offenses?
+            </p>
+            <div class="bg-red-50 border-l-4 border-red-500 p-3 mt-3">
+              <p class="text-red-900 font-medium text-sm">
+                <strong>Solution:</strong> 46.9% of 154,123 exempt vehicles are repeat offenders, with #1 offender accumulating 1,377 violations across BX36/BX35 routes over 658 days.
+              </p>
+            </div>
+          </li>
+
+          <li class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+              3. Congestion Pricing & Violations
+            </h3>
+            <p class="text-gray-800 dark:text-gray-200 mb-3">
+              How has the implementation of congestion pricing affected bus lane violation patterns, and what does this tell us about enforcement effectiveness?
+            </p>
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-3 mt-3">
+              <p class="text-yellow-900 font-medium text-sm">
+                <strong>Solution:</strong> CBD routes showed +15.8% violation increase post-congestion pricing with -1.3% speed decline, indicating enforcement challenges during policy transition.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-12 print:bg-white print:text-black print:border-t-2 print:border-black">
+  <footer class="bg-gray-900 dark:bg-gray-950 text-white py-12 print:bg-white print:text-black print:border-t-2 print:border-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div class="md:col-span-2">
@@ -376,9 +397,9 @@ const pageDescription = 'How a CUNY student transformed a 2-hour BxM10 commute i
         <div>
           <h3 class="font-semibold mb-4">Research</h3>
           <ul class="space-y-2 text-sm text-gray-400">
-            <li><a href="/methodology" class="hover:text-white transition-colors">Methodology</a></li>
-            <li><a href="/findings" class="hover:text-white transition-colors">Key Findings</a></li>
-            <li><a href="/solution" class="hover:text-white transition-colors">Solution Framework</a></li>
+            <li><a href="/ACE_Intelligence_System/methodology" class="hover:text-white transition-colors">Methodology</a></li>
+            <li><a href="/ACE_Intelligence_System/findings" class="hover:text-white transition-colors">Key Findings</a></li>
+            <li><a href="/ACE_Intelligence_System/solution" class="hover:text-white transition-colors">Solution Framework</a></li>
             <li><a href="#route-analyzer" class="hover:text-white transition-colors">Route Analyzer</a></li>
           </ul>
         </div>
@@ -387,13 +408,14 @@ const pageDescription = 'How a CUNY student transformed a 2-hour BxM10 commute i
           <h3 class="font-semibold mb-4">Take Action</h3>
           <ul class="space-y-2 text-sm text-gray-400">
             <li><a href="/contact" class="hover:text-white transition-colors">Contact Officials</a></li>
-            <li><a href="/about" class="hover:text-white transition-colors">About the Team</a></li>
+            <li><a href="/ACE_Intelligence_System/about" class="hover:text-white transition-colors">About the Team</a></li>
             <li><a href="/contact#share-story" class="hover:text-white transition-colors">Share Your Story</a></li>
           </ul>
         </div>
       </div>
 
       <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-400 text-center">
+        <p class="mb-2"><strong>Jujutsu Query team:</strong> Basir A. Samad @ Baruch, Albert Bagdasarov @ Hunter, Caitline Reyes @ Hunter, Tenzin Namdol @ Baruch</p>
         <p>&copy; 2025 ClearLane Initiative. Data-driven advocacy for educational equity.</p>
       </div>
     </div>

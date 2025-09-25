@@ -1,0 +1,409 @@
+---
+/**
+ * Streamlit Dashboards - Albert's Work (4 main sections)
+ */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/shared/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+import Footer from '../components/shared/Footer.astro';
+
+const pageTitle = 'Dashboards - ClearLane Initiative';
+const pageDescription = 'Live Streamlit dashboards by Albert: ACE & Speed, CUNY Analytics, Map, and Violations Overview.';
+
+const streamlit = {
+  home: 'https://jujutsuquery-mta-analytics.streamlit.app/',
+  aceAndSpeed: 'https://jujutsuquery-mta-analytics.streamlit.app/ace_and_speed',
+  cunyAnalytics: 'https://jujutsuquery-mta-analytics.streamlit.app/cuny_analytics',
+  map: 'https://jujutsuquery-mta-analytics.streamlit.app/map',
+  violationsOverview: 'https://jujutsuquery-mta-analytics.streamlit.app/violations_overview',
+  // Albert's GitHub repository
+  githubRepo: 'https://github.com/AlbertBagdos256/ClearLane_MTA_Data_driven_insights'
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header currentPath={Astro.url.pathname} />
+
+  <main id="main-content">
+    <Hero
+      title="Live Analytical Dashboards"
+      subtitle="Streamlit by Albert"
+      description="Explore the interactive dashboards powering ClearLane's findings. Complete analysis of 3.78 million MTA violation records."
+      ctaText="View Main Dashboard"
+      ctaHref={streamlit.home}
+      secondaryCtaText="View GitHub Code"
+      secondaryCtaHref={streamlit.githubRepo}
+      variant="data"
+    />
+
+
+    <!-- Direct Access Section -->
+    <section class="py-12 bg-blue-50 dark:bg-blue-900/20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          🔗 Direct Dashboard Access
+        </h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-8">
+          While we resolve the embedding issues, access Albert's dashboards directly:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href={streamlit.aceAndSpeed} target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors">
+            ACE & Speed Analysis
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+          <a href={streamlit.cunyAnalytics} target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 transition-colors">
+            CUNY Analytics
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+          <a href={streamlit.map} target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-purple-600 hover:bg-purple-700 transition-colors">
+            Interactive Map
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+          <a href={streamlit.violationsOverview} target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-red-600 hover:bg-red-700 transition-colors">
+            Violations Overview
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="mt-6">
+          <a href={streamlit.githubRepo} target="_blank" rel="noopener"
+             class="inline-flex items-center px-8 py-3 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors">
+            📂 View Complete Code on GitHub
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white dark:bg-gray-900">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+        <!-- ACE & Speed Dashboard -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+          <div class="p-8">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">ACE System & Bus Performance</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+              Our research uncovered an <strong>enforcement paradox</strong>: despite automated camera enforcement,
+              85.6% of analyzed routes show declining performance. The Q44+ route accumulated 164,806 violations
+              yet experienced a -3.3% speed decrease.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-red-500 mb-2">-3.3%</div>
+                <div class="text-gray-600 dark:text-gray-300">Q44+ Speed Decrease</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-orange-500 mb-2">164,806</div>
+                <div class="text-gray-600 dark:text-gray-300">Q44+ Total Violations</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-primary-600 mb-2">477</div>
+                <div class="text-gray-600 dark:text-gray-300">Routes with Declining Performance</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-200 dark:border-gray-700">
+            <!-- Streamlit Unavailable Message -->
+            <div class="flex items-center justify-center h-[400px] bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20">
+              <div class="text-center p-8 max-w-md">
+                <div class="w-16 h-16 mx-auto mb-4 bg-blue-600 rounded-full flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">ACE & Speed Analysis</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Dashboard temporarily unavailable due to Streamlit redirect issues</p>
+                <a href={streamlit.aceAndSpeed} target="_blank" rel="noopener"
+                   class="inline-flex items-center px-6 py-3 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                  Open Dashboard Directly
+                  <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-gray-50 dark:bg-gray-700 text-center space-y-2">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Having trouble? Try these alternative access methods:
+            </p>
+            <div class="flex flex-wrap gap-2 justify-center">
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.home} target="_blank" rel="noopener">Main Dashboard</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.aceAndSpeed} target="_blank" rel="noopener">ACE & Speed</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.githubRepo} target="_blank" rel="noopener">GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CUNY Analytics Dashboard -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+          <div class="p-8">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">CUNY Campus Analytics</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+              Using spatial analysis with 500-meter buffer zones around college campuses, we identified violations
+              that directly impact student transportation. This provides the quantitative foundation for the
+              ClearLane Initiative's targeted enforcement approach.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-primary-600 mb-2">500m</div>
+                <div class="text-gray-600 dark:text-gray-300">Campus Buffer Zone Analysis</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-green-500 mb-2">16,868</div>
+                <div class="text-gray-600 dark:text-gray-300">Top Priority Location Violations</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-secondary-600 mb-2">Top 10</div>
+                <div class="text-gray-600 dark:text-gray-300">Campus-Adjacent Hotspots Identified</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-200 dark:border-gray-700">
+            <!-- Streamlit Unavailable Message -->
+            <div class="flex items-center justify-center h-[400px] bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20">
+              <div class="text-center p-8 max-w-md">
+                <div class="w-16 h-16 mx-auto mb-4 bg-green-600 rounded-full flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">CUNY Campus Analytics</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Dashboard temporarily unavailable due to Streamlit redirect issues</p>
+                <a href={streamlit.cunyAnalytics} target="_blank" rel="noopener"
+                   class="inline-flex items-center px-6 py-3 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700 transition-colors">
+                  Open Dashboard Directly
+                  <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-gray-50 dark:bg-gray-700 text-center space-y-2">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Having trouble? Try these alternative access methods:
+            </p>
+            <div class="flex flex-wrap gap-2 justify-center">
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.home} target="_blank" rel="noopener">Main Dashboard</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.cunyAnalytics} target="_blank" rel="noopener">Campus Analytics</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.githubRepo} target="_blank" rel="noopener">GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map Dashboard -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+          <div class="p-8">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Interactive Violations Map</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+              Geographic visualization of bus lane violations across NYC. This interactive map shows hotspot clusters,
+              route-specific patterns, and spatial relationships between violations and CUNY campuses.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-blue-500 mb-2">90</div>
+                <div class="text-gray-600 dark:text-gray-300">High-Priority Locations</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-purple-500 mb-2">3.78M</div>
+                <div class="text-gray-600 dark:text-gray-300">Violations Mapped</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-green-500 mb-2">25</div>
+                <div class="text-gray-600 dark:text-gray-300">CUNY Campuses Analyzed</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-200 dark:border-gray-700">
+            <!-- Streamlit Unavailable Message -->
+            <div class="flex items-center justify-center h-[400px] bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20">
+              <div class="text-center p-8 max-w-md">
+                <div class="w-16 h-16 mx-auto mb-4 bg-purple-600 rounded-full flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Interactive Violations Map</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Dashboard temporarily unavailable due to Streamlit redirect issues</p>
+                <a href={streamlit.map} target="_blank" rel="noopener"
+                   class="inline-flex items-center px-6 py-3 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors">
+                  Open Dashboard Directly
+                  <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-gray-50 dark:bg-gray-700 text-center space-y-2">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Having trouble? Try these alternative access methods:
+            </p>
+            <div class="flex flex-wrap gap-2 justify-center">
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.home} target="_blank" rel="noopener">Main Dashboard</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.map} target="_blank" rel="noopener">Interactive Map</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.githubRepo} target="_blank" rel="noopener">GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Violations Overview Dashboard -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+          <div class="p-8">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Violations Overview</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+              Comprehensive overview of MTA bus lane violations: trends, patterns, and insights from the complete dataset.
+              Explore temporal patterns, route comparisons, and enforcement effectiveness metrics.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-red-500 mb-2">3.78M</div>
+                <div class="text-gray-600 dark:text-gray-300">Total Violations Analyzed</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-orange-500 mb-2">557</div>
+                <div class="text-gray-600 dark:text-gray-300">Bus Routes Monitored</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-blue-500 mb-2">7-10 AM</div>
+                <div class="text-gray-600 dark:text-gray-300">Peak Violation Hours</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-200 dark:border-gray-700">
+            <!-- Streamlit Unavailable Message -->
+            <div class="flex items-center justify-center h-[400px] bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20">
+              <div class="text-center p-8 max-w-md">
+                <div class="w-16 h-16 mx-auto mb-4 bg-red-600 rounded-full flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Violations Overview</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Dashboard temporarily unavailable due to Streamlit redirect issues</p>
+                <a href={streamlit.violationsOverview} target="_blank" rel="noopener"
+                   class="inline-flex items-center px-6 py-3 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors">
+                  Open Dashboard Directly
+                  <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-gray-50 dark:bg-gray-700 text-center space-y-2">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Having trouble? Try these alternative access methods:
+            </p>
+            <div class="flex flex-wrap gap-2 justify-center">
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.home} target="_blank" rel="noopener">Main Dashboard</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.violationsOverview} target="_blank" rel="noopener">Violations Overview</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.githubRepo} target="_blank" rel="noopener">GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-primary-600 to-primary-700">
+      <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-white mb-4">
+          Ready to Implement ClearLane?
+        </h2>
+        <p class="text-xl text-blue-100 mb-8">
+          These dashboards provide the data foundation for targeted enforcement that can reclaim 7 million student-hours annually.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/ACE_Intelligence_System/solution"
+            class="inline-flex items-center px-8 py-3 border border-transparent text-lg font-medium rounded-lg text-primary-600 bg-white hover:bg-gray-50 transition-colors"
+          >
+            View ClearLane Solution
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a
+            href="/ACE_Intelligence_System/findings"
+            class="inline-flex items-center px-8 py-3 border-2 border-white text-lg font-medium rounded-lg text-white hover:bg-white hover:text-primary-600 transition-colors"
+          >
+            Research Findings
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Loading states and iframe styling */
+  iframe {
+    transition: opacity 0.3s ease;
+  }
+
+  iframe:not([src]) {
+    opacity: 0.5;
+    background: linear-gradient(45deg, #f8fafc, #e2e8f0);
+  }
+
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    .bg-gray-50 {
+      border: 2px solid;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    iframe {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Simple dashboard tracking for analytics
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('ClearLane Dashboard page loaded - Streamlit integration temporarily unavailable');
+
+    // Track direct dashboard clicks for analytics
+    const dashboardLinks = document.querySelectorAll('a[href*="streamlit.app"]');
+    dashboardLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        console.log('Direct dashboard access:', this.href);
+      });
+    });
+  });
+</script>

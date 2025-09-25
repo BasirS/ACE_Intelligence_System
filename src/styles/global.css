@@ -45,10 +45,10 @@ h1, h2, h3, h4, h5, h6 {
   --color-gray-800: #1f2937;
   --color-gray-900: #111827;
 
-  /* Text Colors */
-  --color-text-primary: var(--color-gray-900);
-  --color-text-secondary: var(--color-gray-600);
-  --color-text-muted: var(--color-gray-500);
+  /* Text Colors - Enhanced contrast */
+  --color-text-primary: #111827;        /* Darker for better contrast */
+  --color-text-secondary: #374151;      /* Darker gray */
+  --color-text-muted: #4b5563;         /* Less muted, more readable */
   --color-text-inverse: white;
 
   /* Background Colors */
@@ -76,6 +76,68 @@ body {
   color: var(--color-text-primary);
   font-size: 1rem;
   line-height: 1.6;
+}
+
+/* Base color inheritance - let Tailwind handle dark mode */
+/* Removed problematic global color inheritance rule */
+
+/* Only override when necessary for specific components */
+.text-white {
+  color: white;
+}
+
+/* Force analyze button to be DARK NAVY BLUE - ULTRA SPECIFIC */
+.analyze-button,
+button.analyze-button,
+#analyze-button {
+  background: linear-gradient(135deg, #1e3a8a, #1e40af) !important; /* DARK NAVY BLUE */
+  border: 2px solid #1e3a8a !important;
+  box-shadow: 0 4px 8px rgba(30, 58, 138, 0.4) !important;
+}
+
+.analyze-button *,
+.analyze-button .button-text,
+.analyze-button span,
+button.analyze-button *,
+button.analyze-button .button-text,
+button.analyze-button span,
+#analyze-button *,
+#analyze-button .button-text,
+#analyze-button span {
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+.dark .analyze-button,
+.dark .analyze-button *,
+.dark .analyze-button .button-text,
+.dark .analyze-button span,
+.dark button.analyze-button,
+.dark button.analyze-button *,
+.dark button.analyze-button .button-text,
+.dark button.analyze-button span,
+.dark #analyze-button,
+.dark #analyze-button *,
+.dark #analyze-button .button-text,
+.dark #analyze-button span {
+  color: white !important;
+}
+
+/* Dark mode text colors - let Tailwind classes work */
+.dark .text-gray-900 {
+  color: #f9fafb !important;
+}
+
+.dark .text-gray-800 {
+  color: #f3f4f6 !important;
+}
+
+.dark .text-gray-700 {
+  color: #e5e7eb !important;
+}
+
+.dark .text-gray-600 {
+  color: #d1d5db !important;
 }
 
 /* Accessibility improvements */
@@ -181,11 +243,145 @@ html {
   }
 }
 
-/* Dark mode preparation (not implemented but structure ready) */
+/* Smooth Dark Mode Implementation with Transitions */
+:root {
+  --transition-theme: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.dark {
+  --color-background: #111827;
+  --color-background-muted: #1f2937;
+  --color-background-inverse: #f9fafb;
+  --color-text-primary: #f9fafb;
+  --color-text-secondary: #d1d5db;
+  --color-text-muted: #9ca3af;
+  --color-text-inverse: #111827;
+  --color-border: #374151;
+  --color-border-muted: #4b5563;
+}
+
+.dark body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+.dark .bg-white {
+  background-color: var(--color-background-muted) !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: var(--color-background) !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #374151 !important;
+}
+
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-gray-900 {
+  color: var(--color-text-primary) !important;
+}
+
+.dark .text-gray-600 {
+  color: var(--color-text-secondary) !important;
+}
+
+.dark .text-gray-400,
+.dark .text-gray-500 {
+  color: var(--color-text-muted) !important;
+}
+
+.dark .border-gray-200 {
+  border-color: var(--color-border) !important;
+}
+
+.dark .border-gray-300 {
+  border-color: var(--color-border-muted) !important;
+}
+
+.dark header {
+  background-color: var(--color-background-muted) !important;
+  border-color: var(--color-border) !important;
+}
+
+.dark footer {
+  background-color: #0f172a !important;
+}
+
+/* Enhanced datathon questions styling for dark mode */
+.dark .bg-blue-50 {
+  background-color: #1e3a8a !important;
+}
+
+.dark .bg-red-50 {
+  background-color: #7f1d1d !important;
+}
+
+.dark .bg-yellow-50 {
+  background-color: #78350f !important;
+}
+
+.dark .border-blue-500 {
+  border-color: #3b82f6 !important;
+}
+
+.dark .border-red-500 {
+  border-color: #ef4444 !important;
+}
+
+.dark .border-yellow-500 {
+  border-color: #eab308 !important;
+}
+
+.dark .text-blue-900 {
+  color: #93c5fd !important;
+}
+
+.dark .text-red-900 {
+  color: #fca5a5 !important;
+}
+
+.dark .text-yellow-900 {
+  color: #fde047 !important;
+}
+
+/* Smooth transitions for body */
+body {
+  transition: var(--transition-theme);
+}
+
+/* Header and footer with smooth transitions */
+header {
+  transition: var(--transition-theme);
+}
+
+footer {
+  transition: var(--transition-theme);
+}
+
+/* Smooth transitions for interactive elements */
+button, .btn, a {
+  transition: var(--transition-theme);
+}
+
+/* Enhanced focus states for dark mode */
+.dark .focus\:ring-blue-500:focus {
+  --tw-ring-color: #60a5fa !important;
+}
+
+/* Better contrast for links in dark mode */
+.dark a:hover {
+  color: #60a5fa !important;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    /* Dark mode colors would go here */
   }
 }
 
@@ -225,94 +421,15 @@ html {
   }
 }
 
-/* Emoji and icon containment - Force containment */
-[role="img"] {
-  display: inline-block !important;
-  vertical-align: middle !important;
-  line-height: 1 !important;
-  position: relative !important;
-  max-width: 100% !important;
-  overflow: hidden !important;
-}
-
-/* Ensure emojis don't break out of their containers */
-.text-3xl, .text-4xl, .text-5xl {
-  display: block !important;
-  width: 100% !important;
-  text-align: center !important;
-  overflow: hidden !important;
-  position: relative !important;
-}
-
-/* Prevent emoji from floating - More aggressive containment */
+/* Simple emoji containment */
 .emoji-container {
-  position: relative !important;
-  display: block !important;
-  width: 100% !important;
-  text-align: center !important;
-  overflow: hidden !important;
-  contain: layout !important;
+  display: block;
+  text-align: center;
+  line-height: 1;
 }
 
-/* Force all emoji divs to stay in place */
-div[class*="text-"] {
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-/* Specific targeting for problematic emojis */
-div:has(> [role="img"]) {
-  position: relative !important;
-  overflow: hidden !important;
-  contain: layout !important;
-}
-
-/* Force all emoji elements to stay in their containers */
-div[class*="text-"]:has(> [role="img"]) {
-  position: relative !important;
-  overflow: hidden !important;
-  contain: layout !important;
-  display: block !important;
-  width: 100% !important;
-  text-align: center !important;
-}
-
-/* Force all emoji elements to stay in their containers */
 [role="img"] {
-  position: relative !important;
-  display: inline-block !important;
-  max-width: 100% !important;
-  overflow: hidden !important;
-  vertical-align: middle !important;
-  z-index: 1 !important;
-}
-
-/* Nuclear option - force all emoji containers to be properly positioned */
-.emoji-container {
-  position: relative !important;
-  display: block !important;
-  width: 100% !important;
-  text-align: center !important;
-  overflow: hidden !important;
-  contain: layout !important;
-  z-index: 1 !important;
-}
-
-/* Force all text size classes to contain their content */
-.text-3xl, .text-4xl, .text-5xl {
-  position: relative !important;
-  display: block !important;
-  width: 100% !important;
-  text-align: center !important;
-  overflow: hidden !important;
-  contain: layout !important;
-  z-index: 1 !important;
-}
-
-/* Ensure emojis don't escape their parent containers */
-.emoji-container * {
-  position: relative !important;
-  display: inline-block !important;
-  max-width: 100% !important;
-  overflow: hidden !important;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
 }

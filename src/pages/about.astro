@@ -9,13 +9,14 @@ import Header from '../components/shared/Header.astro';
 import Hero from '../components/sections/Hero.astro';
 import Card from '../components/ui/Card.astro';
 import Button from '../components/ui/Button.astro';
+import Footer from '../components/shared/Footer.astro';
 
 const pageTitle = 'About - ClearLane Initiative';
 const pageDescription = 'Learn about the ClearLane Initiative: our mission to protect student study time through data-driven bus enforcement, our research methodology, and the team behind the project.';
 
 const mission = {
   title: 'Our Mission',
-  description: 'To protect the vital study time of CUNY students by using data science to identify and solve bus enforcement failures that disrupt their daily commutes.',
+  description: 'To protect the vital study time of students by using data science to identify and solve bus enforcement failures that disrupt their daily commutes.',
   values: [
     {
       title: 'Student-Centered',
@@ -42,11 +43,15 @@ const mission = {
 
 const story = {
   title: 'The Story Behind ClearLane',
-  content: `ClearLane began with a simple observation: my 2-hour BxM10 commute from the Bronx to Baruch College was my most productive study time. But when buses were delayed by bus lane violations, I lost more than travel time—I lost my rolling study hall.
+  content: `ClearLane started with something we all experience: that frustrating moment when you're trying to get somewhere important and everything just goes wrong. For us, it was those long BxM10 rides from the Bronx to Baruch College, where we actually got our best studying done. There's something about being on a bus that just works for focusing, you know?
 
-This personal experience led to a deeper investigation. Using data science skills developed through my studies, I analyzed 3.7 million MTA violation records to understand the patterns behind these disruptions. The results were clear: enforcement failures are predictable, localized, and disproportionately impact students during their most critical study hours.
+But here's the thing that really got us thinking. When cars would block the bus lanes and our bus got delayed, we weren't just losing travel time. We were losing our study time, that precious window where we could actually concentrate and get work done. And we started noticing this wasn't just happening to us. Other students were dealing with the same problem, day after day.
 
-ClearLane represents the intersection of personal experience, academic rigor, and civic engagement—turning a daily frustration into actionable insights for better transit policy.`
+So we decided to dig deeper. We had been learning data science in our classes, and we thought, why not use those skills to figure out what's really going on with these bus delays? We got our hands on 3.7 million MTA violation records and started looking for patterns. What we found was pretty eye-opening.
+
+Turns out, these enforcement failures aren't random at all. They happen in predictable places, at predictable times, and they hit students hardest when we need reliable transportation the most. It's like the system was failing us right when we needed it to work.
+
+That's how ClearLane came together. We took something that was just a daily annoyance and turned it into something bigger. We combined our personal experience with the research skills we were learning in school, and we ended up with insights that could actually help make transit policy better for everyone.`
 };
 
 const methodology = {
@@ -55,13 +60,13 @@ const methodology = {
   steps: [
     {
       step: 'Data Collection',
-      description: 'Comprehensive analysis of 3.7M MTA violation records, CUNY campus locations, and bus route data',
-      details: 'Multiple data sources including NYC Open Data, MTA GTFS feeds, and CUNY institutional research'
+      description: 'Comprehensive analysis of 3.7M MTA violation records, campus locations, and bus route data',
+      details: 'Multiple data sources including NYC Open Data, MTA GTFS feeds, and institutional research'
     },
     {
       step: 'Spatial Analysis',
       description: 'Geographic clustering using DBSCAN to identify violation hotspots',
-      details: 'Haversine distance calculations and buffer zone analysis around CUNY campuses'
+      details: 'Haversine distance calculations and buffer zone analysis around college campuses'
     },
     {
       step: 'Temporal Analysis',
@@ -83,14 +88,35 @@ const methodology = {
 
 const team = {
   title: 'Meet the Team',
-  description: 'ClearLane is developed by a CUNY student passionate about using data science for social good.',
+  description: 'This project was primarily created by Basir Abdul Samad. Teammates are listed with college and major.',
   members: [
     {
-      name: 'Abdul Basir',
-      role: 'Founder & Lead Researcher',
-      affiliation: 'CUNY Baruch College',
-      background: 'Data Science student with expertise in transportation analytics and civic technology',
-      contribution: 'Led the complete research pipeline from data collection to solution development'
+      name: 'Basir Abdul Samad',
+      role: 'Statistics & Quantitative Modeling',
+      affiliation: 'Baruch College',
+      background: 'Primary creator; led the complete research pipeline end-to-end',
+      contribution: ''
+    },
+    {
+      name: 'Albert Bagdasarov',
+      role: 'Statistics & Quantitative Modeling',
+      affiliation: 'Hunter College',
+      background: '',
+      contribution: 'Built the interactive Streamlit dashboard'
+    },
+    {
+      name: 'Caitlin Reyes',
+      role: 'Statistics & Quantitative Modeling',
+      affiliation: 'Hunter College',
+      background: '',
+      contribution: 'Supported development of the Streamlit dashboard'
+    },
+    {
+      name: 'Tenzin Namdol',
+      role: 'Statistics & Quantitative Modeling',
+      affiliation: 'Baruch College',
+      background: '',
+      contribution: 'Assisted with coding tasks'
     }
   ]
 };
@@ -102,7 +128,7 @@ const impact = {
     { value: '40%', label: 'Violation Reduction', description: 'At 90 high-priority locations' },
     { value: '12%', label: 'Speed Improvement', description: 'Based on proven ACE effectiveness' },
     { value: '8.7M', label: 'Student Hours Saved', description: 'Annual study time protected' },
-    { value: '270K+', label: 'Students Benefited', description: 'CUNY students with improved commutes' }
+    { value: '270K+', label: 'Students Benefited', description: 'Students with improved commutes' }
   ]
 };
 
@@ -112,7 +138,7 @@ const nextSteps = {
   initiatives: [
     {
       title: 'Pilot Program',
-      description: 'Deploy targeted enforcement at top 10 CUNY-impacting hotspots',
+      description: 'Deploy targeted enforcement at top 10 student-impacting hotspots',
       timeline: '3-6 months'
     },
     {
@@ -138,32 +164,34 @@ const nextSteps = {
   <Header />
   
   <main>
-    <!-- Hero Section -->
+    <!-- Hero Section (visual slot intentionally empty to remove default visualization) -->
     <Hero
       title="About ClearLane"
       subtitle="Data-Driven Transit Solutions"
       description="Learn about our mission to protect student study time through evidence-based bus enforcement strategies."
       ctaText="View Our Research"
-      ctaHref="/methodology"
+      ctaHref="/ACE_Intelligence_System/methodology"
       secondaryCtaText="See Findings"
-      secondaryCtaHref="/findings"
-      variant="about"
-    />
+      secondaryCtaHref="/ACE_Intelligence_System/findings"
+      variant="data"
+    >
+      <div slot="visual"></div>
+    </Hero>
 
     <!-- Mission Section -->
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-white dark:bg-gray-900">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">{mission.title}</h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">{mission.description}</p>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">{mission.title}</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">{mission.description}</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {mission.values.map((value) => (
             <Card className="text-center p-6">
               <div class="text-4xl mb-4 emoji-container" role="img" aria-label={`${value.title} icon`}>{value.icon}</div>
-              <h3 class="text-lg font-semibold text-gray-900 mb-3">{value.title}</h3>
-              <p class="text-gray-600 text-sm">{value.description}</p>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{value.title}</h3>
+              <p class="text-gray-600 dark:text-gray-300 text-sm">{value.description}</p>
             </Card>
           ))}
         </div>
@@ -171,37 +199,37 @@ const nextSteps = {
     </section>
 
     <!-- Story Section -->
-    <section class="py-16 bg-gray-50">
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">{story.title}</h2>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">{story.title}</h2>
         </div>
-        <div class="prose prose-lg max-w-none text-gray-700">
+        <div class="prose prose-lg max-w-none text-gray-700 dark:text-gray-300">
           <p class="text-lg leading-relaxed">{story.content}</p>
         </div>
       </div>
     </section>
 
     <!-- Methodology Section -->
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-white dark:bg-gray-900">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">{methodology.title}</h2>
-          <p class="text-xl text-gray-600">{methodology.description}</p>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">{methodology.title}</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300">{methodology.description}</p>
         </div>
 
         <div class="space-y-8">
           {methodology.steps.map((step, index) => (
             <div class="flex items-start">
               <div class="flex-shrink-0">
-                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">
+                <div class="w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
                   {index + 1}
                 </div>
               </div>
               <div class="ml-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">{step.step}</h3>
-                <p class="text-gray-700 mb-2">{step.description}</p>
-                <p class="text-sm text-gray-500">{step.details}</p>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">{step.step}</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">{step.description}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">{step.details}</p>
               </div>
             </div>
           ))}
@@ -210,22 +238,22 @@ const nextSteps = {
     </section>
 
     <!-- Team Section -->
-    <section class="py-16 bg-gray-50">
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">{team.title}</h2>
-          <p class="text-xl text-gray-600">{team.description}</p>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">{team.title}</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300">{team.description}</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {team.members.map((member) => (
             <Card className="p-8">
               <div class="text-center">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                <p class="text-lg text-primary mb-2">{member.role}</p>
-                <p class="text-gray-600 mb-4">{member.affiliation}</p>
-                <p class="text-gray-700 mb-4">{member.background}</p>
-                <p class="text-sm text-gray-600 italic">{member.contribution}</p>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">{member.name}</h3>
+                <p class="text-lg text-primary-600 mb-2">{member.role}</p>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">{member.affiliation}</p>
+                <p class="text-gray-700 dark:text-gray-300 mb-4">{member.background}</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 italic">{member.contribution}</p>
               </div>
             </Card>
           ))}
@@ -234,19 +262,19 @@ const nextSteps = {
     </section>
 
     <!-- Impact Section -->
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-white dark:bg-gray-900">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">{impact.title}</h2>
-          <p class="text-xl text-gray-600">{impact.description}</p>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">{impact.title}</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300">{impact.description}</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {impact.metrics.map((metric) => (
             <div class="text-center">
-              <div class="text-4xl font-bold text-primary mb-2">{metric.value}</div>
-              <div class="text-lg font-semibold text-gray-900 mb-2">{metric.label}</div>
-              <div class="text-sm text-gray-600">{metric.description}</div>
+              <div class="text-4xl font-bold text-primary-600 mb-2">{metric.value}</div>
+              <div class="text-lg font-semibold text-gray-900 dark:text-white mb-2">{metric.label}</div>
+              <div class="text-sm text-gray-600 dark:text-gray-300">{metric.description}</div>
             </div>
           ))}
         </div>
@@ -254,19 +282,19 @@ const nextSteps = {
     </section>
 
     <!-- Next Steps Section -->
-    <section class="py-16 bg-gray-50">
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">{nextSteps.title}</h2>
-          <p class="text-xl text-gray-600">{nextSteps.description}</p>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">{nextSteps.title}</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300">{nextSteps.description}</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {nextSteps.initiatives.map((initiative) => (
             <Card className="p-6">
-              <h3 class="text-lg font-semibold text-gray-900 mb-2">{initiative.title}</h3>
-              <p class="text-gray-700 mb-3">{initiative.description}</p>
-              <div class="text-sm text-primary font-medium">Timeline: {initiative.timeline}</div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">{initiative.title}</h3>
+              <p class="text-gray-700 dark:text-gray-300 mb-3">{initiative.description}</p>
+              <div class="text-sm text-primary-600 font-medium">Timeline: {initiative.timeline}</div>
             </Card>
           ))}
         </div>
@@ -274,23 +302,26 @@ const nextSteps = {
     </section>
 
     <!-- Call to Action Section -->
-    <section class="py-16 bg-secondary text-white">
+    <section class="py-16 bg-secondary-600 text-white">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl sm:text-4xl font-bold mb-6">
           Ready to Make a Difference?
         </h2>
-        <p class="text-xl text-secondary-light mb-8 max-w-2xl mx-auto">
+        <p class="text-xl text-green-200 mb-8 max-w-2xl mx-auto">
           Join us in protecting student study time through data-driven transit enforcement.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/findings" variant="primary" size="lg">
+          <Button href="/ACE_Intelligence_System/findings" variant="primary" size="lg">
             Explore Our Findings
           </Button>
-          <Button href="/solution" variant="ghost" size="lg" className="text-white border-white">
+          <Button href="/ACE_Intelligence_System/solution" variant="ghost" size="lg" className="text-white border-white">
             See the Solution
           </Button>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Footer -->
+  <Footer />
 </BaseLayout>

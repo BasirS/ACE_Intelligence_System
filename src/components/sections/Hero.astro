@@ -33,10 +33,10 @@ const {
 } = Astro.props;
 
 const heroClasses = {
-  default: 'bg-gradient-to-br from-primary to-primary-dark',
-  personal: 'bg-gradient-to-br from-gray-900 via-gray-800 to-primary-dark',
-  data: 'bg-gradient-to-br from-primary to-secondary',
-  solution: 'bg-gradient-to-br from-secondary to-primary'
+  default: 'bg-gradient-to-br from-primary-600 to-primary-800',
+  personal: 'bg-gradient-to-br from-gray-900 via-gray-800 to-primary-800',
+  data: 'bg-gradient-to-br from-primary-600 to-secondary-600',
+  solution: 'bg-gradient-to-br from-secondary-600 to-primary-600'
 };
 ---
 
@@ -164,28 +164,7 @@ const heroClasses = {
           <!-- Visual Content -->
           <div class="relative">
             <slot name="visual">
-              <!-- Default visual content -->
-              <div class="relative">
-                <!-- Decorative elements -->
-                <div class="absolute -inset-4 bg-gradient-to-r from-white/10 to-white/5 rounded-3xl transform rotate-2 backdrop-blur-sm no-print"></div>
-                <div class="absolute -inset-4 bg-gradient-to-r from-white/5 to-white/10 rounded-3xl transform -rotate-1 backdrop-blur-sm no-print"></div>
-
-                <!-- Main visual container -->
-                <div class="relative bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 no-print">
-                  <!-- Bus route visualization placeholder -->
-                  <div class="w-full h-64 sm:h-80 bg-white/20 rounded-xl flex items-center justify-center">
-                    <div class="text-center text-white/80">
-                      <svg class="w-16 h-16 mx-auto mb-4" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2L2 7L12 12L22 7L12 2Z" />
-                        <path d="M2 17L12 22L22 17" />
-                        <path d="M2 12L12 17L22 12" />
-                      </svg>
-                      <p class="text-lg font-medium">Interactive Visualization</p>
-                      <p class="text-sm opacity-80">Bus route and study time correlation</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <!-- No default content - only show custom visualizations -->
             </slot>
           </div>
         </div>

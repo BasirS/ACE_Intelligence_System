@@ -46,21 +46,19 @@ const cunyOptions = [
             <span class="required" aria-label="required">*</span>
           </label>
           <div class="input-wrapper">
-            <input
-              type="text"
+            <select
               id="bus-route"
               name="busRoute"
-              list="route-suggestions"
-              placeholder="e.g., BxM10, M15, B46"
               required
               aria-describedby="route-help"
-              autocomplete="off"
-            />
-            <datalist id="route-suggestions">
-              {sampleRoutes.map(route => (
-                <option value={route}>{route}</option>
-              ))}
-            </datalist>
+            >
+              <option value="">Select your bus route</option>
+              <optgroup label="Popular Routes">
+                {sampleRoutes.map(route => (
+                  <option value={route}>{route}</option>
+                ))}
+              </optgroup>
+            </select>
           </div>
           <small id="route-help" class="help-text">
             Enter your main bus route (check your MetroCard app)
@@ -215,13 +213,6 @@ const cunyOptions = [
             >
               📱 Share Your Story
             </button>
-            <button
-              type="button"
-              id="join-campaign"
-              class="action-button secondary"
-            >
-              👥 Join ClearLane Campaign
-            </button>
           </div>
         </div>
       </div>
@@ -311,6 +302,15 @@ const cunyOptions = [
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
   }
 
+  #custom-route {
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .input-wrapper select {
+    width: 100%;
+  }
+
   .help-text {
     display: block;
     margin-top: 0.5rem;
@@ -344,11 +344,11 @@ const cunyOptions = [
   }
 
   .analyze-button {
-    background: var(--primary-color);
-    color: white;
-    border: none;
+    background: linear-gradient(135deg, #1e3a8a, #1e40af) !important; /* DARK NAVY BLUE gradient */
+    color: #ffffff !important; /* White text */
+    border: 2px solid #1e3a8a !important; /* Dark navy border */
     padding: 1rem 2rem;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
@@ -358,12 +358,20 @@ const cunyOptions = [
     transition: all 0.2s;
     min-width: 200px;
     justify-content: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(30, 58, 138, 0.4) !important;
+  }
+
+  .dark .analyze-button {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border: 2px solid var(--primary-color) !important;
   }
 
   .analyze-button:hover:not(:disabled) {
-    background: #1d4ed8;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+    background: linear-gradient(135deg, #1e40af, #1d4ed8) !important; /* Even darker navy on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(30, 64, 175, 0.5) !important;
   }
 
   .analyze-button:disabled {
@@ -389,19 +397,59 @@ const cunyOptions = [
     opacity: 0.7;
   }
 
+  .analyze-button .button-text {
+    color: #ffffff !important; /* White text on navy background */
+    text-align: center;
+  }
+
+  /* Force button text to be dark black in light mode - ULTRA SPECIFIC */
+  .analyze-button,
+  .analyze-button *,
+  .analyze-button .button-text,
+  .analyze-button span,
+  button.analyze-button,
+  button.analyze-button *,
+  button.analyze-button .button-text,
+  button.analyze-button span,
+  #analyze-button,
+  #analyze-button *,
+  #analyze-button .button-text,
+  #analyze-button span {
+    color: #ffffff !important;
+    text-shadow: none !important;
+  }
+
+  /* White text in dark mode */
+  .dark .analyze-button,
+  .dark .analyze-button *,
+  .dark .analyze-button .button-text,
+  .dark .analyze-button span,
+  .dark button.analyze-button,
+  .dark button.analyze-button *,
+  .dark button.analyze-button .button-text,
+  .dark button.analyze-button span,
+  .dark #analyze-button,
+  .dark #analyze-button *,
+  .dark #analyze-button .button-text,
+  .dark #analyze-button span {
+    color: white !important;
+  }
+
   /* Results Styles */
   .results-container {
-    background: white;
+    background: white !important;
     border-radius: 8px;
     padding: 2rem;
     border: 1px solid var(--color-border);
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   }
 
+  /* Removed aggressive white text rule that was overriding everything */
+
   .results-content h3 {
     margin: 0 0 2rem 0;
     font-size: 1.5rem;
-    color: var(--color-text-primary);
+    color: #111827 !important; /* Dark text instead of white */
     text-align: center;
   }
 
@@ -413,7 +461,7 @@ const cunyOptions = [
   }
 
   .stat-card {
-    background: var(--color-gray-50);
+    background: #f9fafb !important;
     padding: 1.5rem;
     border-radius: 6px;
     text-align: center;
@@ -423,19 +471,19 @@ const cunyOptions = [
   .stat-number {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: #2563eb !important;
     margin-bottom: 0.5rem;
   }
 
   .stat-label {
     font-weight: 600;
-    color: var(--color-text-primary);
+    color: #111827 !important; /* Dark text instead of white */
     margin-bottom: 0.25rem;
   }
 
   .stat-description {
     font-size: 0.9rem;
-    color: var(--secondary-color);
+    color: #4b5563 !important;
   }
 
   /* Insights */
@@ -448,7 +496,7 @@ const cunyOptions = [
   .actions-section h4 {
     margin: 0 0 1rem 0;
     font-size: 1.2rem;
-    color: var(--color-text-primary);
+    color: #111827 !important; /* Dark text instead of white */
   }
 
   .insights-list {
@@ -462,9 +510,9 @@ const cunyOptions = [
     align-items: flex-start;
     gap: 0.75rem;
     padding: 1rem;
-    background: var(--color-gray-50);
+    background: #f9fafb !important;
     border-radius: 4px;
-    border-left: 4px solid var(--primary-color);
+    border-left: 4px solid #2563eb;
   }
 
   .insight-icon {
@@ -473,7 +521,7 @@ const cunyOptions = [
   }
 
   .insight-text {
-    color: var(--color-text-primary);
+    color: #111827 !important; /* Dark text instead of white */
     line-height: 1.5;
   }
 
@@ -507,13 +555,14 @@ const cunyOptions = [
   }
 
   .action-button.secondary {
-    background: var(--color-gray-100);
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-border);
+    background: #f3f4f6 !important; /* Light gray background */
+    color: #111827 !important; /* Dark text */
+    border: 1px solid #d1d5db !important; /* Gray border */
   }
 
   .action-button.secondary:hover {
-    background: var(--color-gray-200);
+    background: #e5e7eb !important; /* Slightly darker gray on hover */
+    color: #111827 !important; /* Keep dark text on hover */
   }
 
   /* Error styles */
@@ -590,7 +639,7 @@ const cunyOptions = [
   // Data loading functions (inlined from csv-loader.ts)
   async function loadHourlyData() {
     try {
-      const response = await fetch('/data/insights/hourly_agg.csv');
+      const response = await fetch('/ACE_Intelligence_System/data/insights/hourly_agg.csv');
       const csvText = await response.text();
       return parseCSV(csvText, (row) => ({
         weekday: row.weekday || '',
@@ -631,7 +680,7 @@ const cunyOptions = [
     constructor() {
       this.form = document.getElementById('route-form');
       this.resultsContainer = document.getElementById('analysis-results');
-      this.errorContainer = document.getElementById('error-container');
+      this.errorContainer = document.getElementById('analysis-error');
       this.hourlyData = [];
       this.init();
     }
@@ -643,14 +692,20 @@ const cunyOptions = [
 
     async loadData() {
       try {
+        console.log('Loading route analysis data...');
         this.hourlyData = await loadHourlyData();
+        console.log('Data loaded successfully:', this.hourlyData.length, 'records');
+        console.log('Sample data:', this.hourlyData.slice(0, 3));
       } catch (error) {
         console.error('Failed to load route analysis data:', error);
+        this.hourlyData = [];
       }
     }
 
     attachEventListeners() {
       this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+
+      // No custom manual entry route handling
 
       // Real-time validation
       this.form.querySelectorAll('input, select').forEach(field => {
@@ -672,9 +727,6 @@ const cunyOptions = [
         this.handleShareStory();
       });
 
-      document.getElementById('join-campaign')?.addEventListener('click', () => {
-        this.handleJoinCampaign();
-      });
     }
 
     async handleSubmit(e) {
@@ -688,16 +740,19 @@ const cunyOptions = [
 
       try {
         const formData = new FormData(this.form);
+        console.log('Starting analysis...');
         const analysis = await this.performAnalysis(formData);
+        console.log('Analysis completed:', analysis);
         this.displayResults(analysis);
       } catch (error) {
-        this.showError('Unable to analyze your route. Please try again.');
+        console.error('Analysis failed:', error);
+        this.showError(`Unable to analyze your route: ${error.message}. Please try again.`);
       } finally {
         this.hideLoading();
       }
     }
 
- validateForm(): boolean {
+    validateForm() {
       let isValid = true;
       const requiredFields = this.form.querySelectorAll('[required]');
 
@@ -725,14 +780,24 @@ const cunyOptions = [
     }
 
     async performAnalysis(formData) {
-      const busRoute = formData.get('busRoute');
+      const selectedRoute = formData.get('busRoute');
+      const busRoute = selectedRoute;
       const destination = formData.get('destination');
       const departureTime = formData.get('departureTime');
       const daysPerWeek = parseInt(formData.get('daysPerWeek'));
       const isStudent = formData.get('isStudent') === 'true';
 
+      console.log('Form data:', { busRoute, destination, departureTime, daysPerWeek, isStudent });
+
       // Extract hour from departure time
       const hour = parseInt(departureTime.split(':')[0]);
+      console.log('Analysis hour:', hour);
+      console.log('Available data count:', this.hourlyData.length);
+
+      // If no data loaded, throw error - NO FAKE DATA
+      if (!this.hourlyData || this.hourlyData.length === 0) {
+        throw new Error('Unable to load violation data. Please try again later.');
+      }
 
       // Calculate analysis based on loaded data
       const relevantData = this.hourlyData.filter(d =>
@@ -740,9 +805,14 @@ const cunyOptions = [
         ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].includes(d.weekday)
       );
 
-      const avgViolationsPerHour = relevantData.length > 0
-        ? relevantData.reduce((sum, d) => sum + d.violations, 0) / relevantData.length
-        : 150; // Fallback estimate
+      console.log('Relevant data found:', relevantData.length);
+      console.log('Sample relevant data:', relevantData.slice(0, 2));
+
+      if (relevantData.length === 0) {
+        throw new Error(`No violation data found for ${busRoute} during ${departureTime} time period. Please try a different route or time.`);
+      }
+
+      const avgViolationsPerHour = relevantData.reduce((sum, d) => sum + d.violations, 0) / relevantData.length
 
       const violationsPerWeek = Math.round(avgViolationsPerHour * daysPerWeek);
       const minutesLostWeekly = Math.round(violationsPerWeek * 2.3); // Estimate 2.3 minutes per violation
@@ -761,39 +831,40 @@ const cunyOptions = [
       };
     }
 
- generateInsights(route: string, violations: number, minutesLost: number, isStudent: boolean) {
+
+    generateInsights(route, violations, minutesLost, isStudent) {
       const insights = [];
 
       if (violations > 100) {
         insights.push({
-          icon: '🚨',
+          icon: '⚠',
           text: `Your ${route} route experiences high violation activity (${violations} per week). This is significantly above the city average.`
         });
       }
 
       if (minutesLost > 60) {
         insights.push({
-          icon: '⏰',
+          icon: '⌚',
           text: `You lose ${minutesLost} minutes weekly to bus delays - that's ${Math.round(minutesLost * 52 / 60)} hours per year.`
         });
       }
 
       if (isStudent) {
         insights.push({
-          icon: '📚',
+          icon: '✓',
           text: `As a student, these delays directly impact your "rolling study hall" time and academic productivity.`
         });
       }
 
       insights.push({
-        icon: '💡',
+        icon: '•',
         text: `ClearLane targeted enforcement could reduce these delays by up to 40% with focused intervention.`
       });
 
       return insights;
     }
 
- displayResults(analysis: any) {
+    displayResults(analysis) {
       // Update statistics
       this.updateStat('violation-exposure', analysis.violationsPerWeek);
       this.updateStat('time-lost', analysis.minutesLostWeekly);
@@ -806,8 +877,8 @@ const cunyOptions = [
       }
 
       // Display insights
-      const insightsList = document.getElementById('route-insights')!;
-      insightsList.innerHTML = analysis.insights.map((insight: any) => `
+      const insightsList = document.getElementById('route-insights');
+      insightsList.innerHTML = analysis.insights.map((insight) => `
         <div class="insight-item">
           <span class="insight-icon" aria-hidden="true">${insight.icon}</span>
           <span class="insight-text">${insight.text}</span>
@@ -850,35 +921,35 @@ const cunyOptions = [
       requestAnimationFrame(animate);
     }
 
- showLoading() {
-      const button = document.getElementById('analyze-button')!;
+    showLoading() {
+      const button = document.getElementById('analyze-button');
       button.classList.add('loading');
-      (button).disabled = true;
+      button.disabled = true;
     }
 
- hideLoading() {
-      const button = document.getElementById('analyze-button')!;
+    hideLoading() {
+      const button = document.getElementById('analyze-button');
       button.classList.remove('loading');
-      (button).disabled = false;
+      button.disabled = false;
     }
 
- showError(message: string) {
+    showError(message) {
       this.hideResults();
-      document.getElementById('error-text')!.textContent = message;
+      document.getElementById('error-text').textContent = message;
       this.errorContainer.removeAttribute('hidden');
       this.errorContainer.scrollIntoView({ behavior: 'smooth' });
     }
 
- hideError() {
+    hideError() {
       this.errorContainer.setAttribute('hidden', '');
     }
 
- hideResults() {
+    hideResults() {
       this.resultsContainer.setAttribute('hidden', '');
     }
 
     // Action handlers
- handleContactOfficials() {
+    handleContactOfficials() {
       const analysis = window.currentAnalysis;
       if (!analysis) return;
 
@@ -898,37 +969,17 @@ Please consider implementing focused enforcement during peak hours on routes ser
 
 Thank you for your attention to this matter.`;
 
-      // Open email client or show contact modal
-      window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      // Open email client with MTA officials address
+      window.location.href = `mailto:complaints@mtaig.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
 
- handleShareStory() {
-      // Social sharing functionality
-      const analysis = window.currentAnalysis;
-      if (!analysis) return;
-
-      const shareText = `My ${analysis.busRoute} bus route has ${analysis.violationsPerWeek} violations per week, costing me ${analysis.minutesLostWeekly} minutes of study time. Support #ClearLane targeted enforcement! 🚌📚`;
-      const shareUrl = window.location.href;
-
-      if (navigator.share) {
-        navigator.share({
-          title: 'ClearLane: My Commute Analysis',
-          text: shareText,
-          url: shareUrl
-        });
-      } else {
-        // Fallback: copy to clipboard
-        navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
-        this.showToast('Share text copied to clipboard!');
-      }
+    handleShareStory() {
+      // Redirect to MTA contact page
+      window.open('https://www.mta.info/contact-us/call-us#:~:text=Other%20numbers,emergencies:%20212%2D878%2D1001', '_blank');
     }
 
- handleJoinCampaign() {
-      // Redirect to campaign signup
-      window.open('#join-campaign', '_blank');
-    }
 
- showToast(message: string) {
+    showToast(message) {
       // Simple toast notification
       const toast = document.createElement('div');
       toast.className = 'toast';

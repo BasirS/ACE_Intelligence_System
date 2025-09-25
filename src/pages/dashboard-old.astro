@@ -1,0 +1,411 @@
+---
+/**
+ * Streamlit Dashboards - Albert's Work (embedded + links)
+ */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/shared/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+import Footer from '../components/shared/Footer.astro';
+
+const pageTitle = 'Dashboards - ClearLane Initiative';
+const pageDescription = 'Live Streamlit dashboards by Albert: overview, ACE system & speed, and campus analytics.';
+
+const streamlit = {
+  home: 'https://jujutsuquery-mta-analytics.streamlit.app/',
+  aceAndSpeed: 'https://jujutsuquery-mta-analytics.streamlit.app/ace_and_speed',
+  cunyAnalytics: 'https://jujutsuquery-mta-analytics.streamlit.app/cuny_analytics',
+  map: 'https://jujutsuquery-mta-analytics.streamlit.app/map',
+  violationsOverview: 'https://jujutsuquery-mta-analytics.streamlit.app/violations_overview',
+  // Albert's GitHub repository
+  githubRepo: 'https://github.com/AlbertBagdos256/ClearLane_MTA_Data_driven_insights'
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header currentPath={Astro.url.pathname} />
+
+  <main id="main-content">
+    <Hero
+      title="Live Analytical Dashboards"
+      subtitle="Streamlit by Albert"
+      description="Explore the interactive dashboards powering ClearLane's findings. If you see redirect errors, try the alternative links below."
+      ctaText="Open Main Dashboard"
+      ctaHref={streamlit.home}
+      secondaryCtaText="Alternative Access"
+      secondaryCtaHref={streamlit.alternative}
+      variant="data"
+    />
+
+    <!-- Redirect Notice -->
+    <section class="py-8 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm text-yellow-700 dark:text-yellow-300">
+              <strong>Streamlit Redirect Issue:</strong> If you see "too many redirects" errors, the Streamlit app may be temporarily unavailable. 
+              Try the alternative access links below or check back later.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white dark:bg-gray-900">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+        <!-- ACE & Speed Dashboard -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+          <div class="p-8">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">ACE System & Bus Performance</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+              Our research uncovered an <strong>enforcement paradox</strong>: despite automated camera enforcement,
+              85.6% of analyzed routes show declining performance. The Q44+ route accumulated 164,806 violations
+              yet experienced a -3.3% speed decrease.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-red-500 mb-2">-3.3%</div>
+                <div class="text-gray-600 dark:text-gray-300">Q44+ Speed Decrease</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-orange-500 mb-2">164,806</div>
+                <div class="text-gray-600 dark:text-gray-300">Q44+ Total Violations</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-primary-600 mb-2">477</div>
+                <div class="text-gray-600 dark:text-gray-300">Routes with Declining Performance</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-200 dark:border-gray-700">
+            <!-- Loading indicator -->
+            <div id="loading-ace" class="flex items-center justify-center h-[800px] bg-gray-50 dark:bg-gray-800">
+              <div class="text-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
+                <p class="text-gray-600 dark:text-gray-400">Loading ACE dashboard...</p>
+              </div>
+            </div>
+
+            <!-- Error fallback -->
+            <div id="error-ace" class="hidden flex items-center justify-center h-[800px] bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800">
+              <div class="text-center p-8">
+                <svg class="mx-auto h-12 w-12 text-red-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="text-lg font-medium text-red-800 dark:text-red-200 mb-2">Dashboard Unavailable</h3>
+                <p class="text-red-600 dark:text-red-400 mb-4">The ACE dashboard couldn't load. Try the direct links below.</p>
+                <div class="space-x-2">
+                  <a href={streamlit.aceAndSpeed} target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700">
+                    Try Dashboard
+                  </a>
+                  <a href={streamlit.githubRepo} target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 border border-red-300 text-sm font-medium rounded-md text-red-700 bg-white hover:bg-red-50">
+                    View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Main iframe -->
+            <iframe
+              id="iframe-ace"
+              src={streamlit.aceAndSpeed}
+              title="Streamlit - ACE & Speed Analysis"
+              class="w-full h-[800px] hidden"
+              loading="lazy"
+              onload="handleIframeLoad('ace')"
+              onerror="handleIframeError('ace')"
+            ></iframe>
+          </div>
+
+          <div class="p-4 bg-gray-50 dark:bg-gray-700 text-center space-y-2">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Having trouble? Try these alternative access methods:
+            </p>
+            <div class="flex flex-wrap gap-2 justify-center">
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.home} target="_blank" rel="noopener">Main Dashboard</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.aceAndSpeed} target="_blank" rel="noopener">ACE & Speed</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.githubRepo} target="_blank" rel="noopener">GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CUNY Analytics Dashboard -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+          <div class="p-8">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">CUNY Campus Analytics</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+              Using spatial analysis with 500-meter buffer zones around college campuses, we identified violations
+              that directly impact student transportation. This provides the quantitative foundation for the
+              ClearLane Initiative's targeted enforcement approach.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-primary-600 mb-2">500m</div>
+                <div class="text-gray-600 dark:text-gray-300">Campus Buffer Zone Analysis</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-green-500 mb-2">16,868</div>
+                <div class="text-gray-600 dark:text-gray-300">Top Priority Location Violations</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-secondary-600 mb-2">Top 10</div>
+                <div class="text-gray-600 dark:text-gray-300">Campus-Adjacent Hotspots Identified</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-200 dark:border-gray-700">
+            <!-- Loading indicator -->
+            <div id="loading-ace" class="flex items-center justify-center h-[800px] bg-gray-50 dark:bg-gray-800">
+              <div class="text-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
+                <p class="text-gray-600 dark:text-gray-400">Loading ACE dashboard...</p>
+              </div>
+            </div>
+
+            <!-- Error fallback -->
+            <div id="error-ace" class="hidden flex items-center justify-center h-[800px] bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800">
+              <div class="text-center p-8">
+                <svg class="mx-auto h-12 w-12 text-red-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="text-lg font-medium text-red-800 dark:text-red-200 mb-2">Dashboard Unavailable</h3>
+                <p class="text-red-600 dark:text-red-400 mb-4">The ACE dashboard couldn't load. Try the direct links below.</p>
+                <div class="space-x-2">
+                  <a href={streamlit.aceAndSpeed} target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700">
+                    Try Dashboard
+                  </a>
+                  <a href={streamlit.githubRepo} target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 border border-red-300 text-sm font-medium rounded-md text-red-700 bg-white hover:bg-red-50">
+                    View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Main iframe -->
+            <iframe
+              id="iframe-ace"
+              src={streamlit.aceAndSpeed}
+              title="Streamlit - ACE & Speed Analysis"
+              class="w-full h-[800px] hidden"
+              loading="lazy"
+              onload="handleIframeLoad('ace')"
+              onerror="handleIframeError('ace')"
+            ></iframe>
+          </div>
+
+          <div class="p-4 bg-gray-50 dark:bg-gray-700 text-center space-y-2">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Having trouble? Try these alternative access methods:
+            </p>
+            <div class="flex flex-wrap gap-2 justify-center">
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.aceAndSpeed} target="_blank" rel="noopener">ACE & Speed</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.shareBase} target="_blank" rel="noopener">Share Link</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href="https://github.com/jujutsuquery/mta-analytics" target="_blank" rel="noopener">GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Campus Analytics Dashboard -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+          <div class="p-8">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Campus Analytics</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+              Using spatial analysis with 500-meter buffer zones around college campuses, we identified violations
+              that directly impact student transportation. This provides the quantitative foundation for the
+              ClearLane Initiative's targeted enforcement approach.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-primary-600 mb-2">500m</div>
+                <div class="text-gray-600 dark:text-gray-300">Campus Buffer Zone Analysis</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-green-500 mb-2">16,868</div>
+                <div class="text-gray-600 dark:text-gray-300">Top Priority Location Violations</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
+                <div class="text-3xl font-bold text-secondary-600 mb-2">Top 10</div>
+                <div class="text-gray-600 dark:text-gray-300">Campus-Adjacent Hotspots Identified</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-200 dark:border-gray-700">
+            <!-- Loading indicator -->
+            <div id="loading-cuny" class="flex items-center justify-center h-[800px] bg-gray-50 dark:bg-gray-800">
+              <div class="text-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
+                <p class="text-gray-600 dark:text-gray-400">Loading campus analytics...</p>
+              </div>
+            </div>
+
+            <!-- Error fallback -->
+            <div id="error-cuny" class="hidden flex items-center justify-center h-[800px] bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800">
+              <div class="text-center p-8">
+                <svg class="mx-auto h-12 w-12 text-red-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="text-lg font-medium text-red-800 dark:text-red-200 mb-2">Dashboard Unavailable</h3>
+                <p class="text-red-600 dark:text-red-400 mb-4">The campus analytics dashboard couldn't load. Try the direct links below.</p>
+                <div class="space-x-2">
+                  <a href={streamlit.cuny} target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700">
+                    Try Dashboard
+                  </a>
+                  <a href={streamlit.githubRepo} target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 border border-red-300 text-sm font-medium rounded-md text-red-700 bg-white hover:bg-red-50">
+                    View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Main iframe -->
+            <iframe
+              id="iframe-cuny"
+              src={streamlit.cuny}
+              title="Streamlit - Campus Analytics"
+              class="w-full h-[800px] hidden"
+              loading="lazy"
+              onload="handleIframeLoad('cuny')"
+              onerror="handleIframeError('cuny')"
+            ></iframe>
+          </div>
+
+          <div class="p-4 bg-gray-50 dark:bg-gray-700 text-center space-y-2">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Having trouble? Try these alternative access methods:
+            </p>
+            <div class="flex flex-wrap gap-2 justify-center">
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.cuny} target="_blank" rel="noopener">Campus Analytics</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href={streamlit.shareBase} target="_blank" rel="noopener">Share Link</a>
+              <a class="inline-flex items-center px-3 py-1 text-xs font-medium text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-md" href="https://github.com/jujutsuquery/mta-analytics" target="_blank" rel="noopener">GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-primary-600 to-primary-700">
+      <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-white mb-4">
+          Ready to Implement ClearLane?
+        </h2>
+        <p class="text-xl text-blue-100 mb-8">
+          These dashboards provide the data foundation for targeted enforcement that can reclaim 7 million student-hours annually.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/ACE_Intelligence_System/solution"
+            class="inline-flex items-center px-8 py-3 border border-transparent text-lg font-medium rounded-lg text-primary-600 bg-white hover:bg-gray-50 transition-colors"
+          >
+            View ClearLane Solution
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a
+            href="/ACE_Intelligence_System/findings"
+            class="inline-flex items-center px-8 py-3 border-2 border-white text-lg font-medium rounded-lg text-white hover:bg-white hover:text-primary-600 transition-colors"
+          >
+            Research Findings
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Loading states and iframe styling */
+  iframe {
+    transition: opacity 0.3s ease;
+  }
+
+  iframe:not([src]) {
+    opacity: 0.5;
+    background: linear-gradient(45deg, #f8fafc, #e2e8f0);
+  }
+
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    .bg-gray-50 {
+      border: 2px solid;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    iframe {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Handle iframe loading and error states
+  function handleIframeLoad(dashboardId) {
+    console.log(`Dashboard ${dashboardId} loaded successfully`);
+
+    // Hide loading indicator
+    const loading = document.getElementById(`loading-${dashboardId}`);
+    if (loading) loading.style.display = 'none';
+
+    // Hide error indicator (in case of retry)
+    const error = document.getElementById(`error-${dashboardId}`);
+    if (error) error.classList.add('hidden');
+
+    // Show iframe
+    const iframe = document.getElementById(`iframe-${dashboardId}`);
+    if (iframe) iframe.classList.remove('hidden');
+  }
+
+  function handleIframeError(dashboardId) {
+    console.error(`Dashboard ${dashboardId} failed to load`);
+
+    // Hide loading indicator
+    const loading = document.getElementById(`loading-${dashboardId}`);
+    if (loading) loading.style.display = 'none';
+
+    // Show error indicator
+    const error = document.getElementById(`error-${dashboardId}`);
+    if (error) error.classList.remove('hidden');
+
+    // Hide iframe
+    const iframe = document.getElementById(`iframe-${dashboardId}`);
+    if (iframe) iframe.classList.add('hidden');
+  }
+
+  // Set loading timeout for each dashboard
+  document.addEventListener('DOMContentLoaded', function() {
+    const dashboards = ['home', 'ace', 'cuny'];
+
+    dashboards.forEach(dashboardId => {
+      // Set timeout to show error if loading takes too long
+      setTimeout(() => {
+        const loading = document.getElementById(`loading-${dashboardId}`);
+        const iframe = document.getElementById(`iframe-${dashboardId}`);
+
+        // If still loading after 15 seconds, show error
+        if (loading && loading.style.display !== 'none' && iframe && iframe.classList.contains('hidden')) {
+          console.warn(`Dashboard ${dashboardId} timed out`);
+          handleIframeError(dashboardId);
+        }
+      }, 15000); // 15 second timeout
+    });
+  });
+</script>

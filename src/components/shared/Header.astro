@@ -4,6 +4,7 @@
  * Responsive navigation with accessibility and mobile support
  */
 
+
 export interface Props {
   currentPath?: string;
 }
@@ -11,26 +12,27 @@ export interface Props {
 const { currentPath = Astro.url.pathname } = Astro.props;
 
 const navigation = [
-  { name: 'Home', href: '/', current: currentPath === '/' },
-  { name: 'About', href: '/about', current: currentPath === '/about' },
-  { name: 'Research', href: '/methodology', current: currentPath === '/methodology' },
-  { name: 'Findings', href: '/findings', current: currentPath === '/findings' },
-  { name: 'Solution', href: '/solution', current: currentPath === '/solution' }
+  { name: 'Home', href: '/ACE_Intelligence_System/', current: currentPath === '/ACE_Intelligence_System/' || currentPath === '/ACE_Intelligence_System/index' },
+  { name: 'About', href: '/ACE_Intelligence_System/about', current: currentPath === '/ACE_Intelligence_System/about' || currentPath.includes('/about') },
+  { name: 'Research', href: '/ACE_Intelligence_System/methodology', current: currentPath === '/ACE_Intelligence_System/methodology' || currentPath.includes('/methodology') || currentPath.includes('/research') },
+  { name: 'Dashboard', href: '/ACE_Intelligence_System/dashboard', current: currentPath === '/ACE_Intelligence_System/dashboard' || currentPath.includes('/dashboard') },
+  { name: 'Findings', href: '/ACE_Intelligence_System/findings', current: currentPath === '/ACE_Intelligence_System/findings' || currentPath.includes('/findings') },
+  { name: 'Solution', href: '/ACE_Intelligence_System/solution', current: currentPath === '/ACE_Intelligence_System/solution' || currentPath.includes('/solution') }
 ];
 
 const ctaButton = {
   text: 'Analyze My Route',
-  href: '/#route-analyzer',
+  href: '/ACE_Intelligence_System/#route-analyzer',
   variant: 'primary'
 };
 ---
 
-<header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50 print:static print:shadow-none">
+<header class="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 print:static print:shadow-none">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16 lg:h-20">
       <!-- Logo and brand -->
       <div class="flex items-center">
-        <a href="/" class="flex items-center space-x-3 group">
+        <a href="/ACE_Intelligence_System/" class="flex items-center space-x-3 group">
           <div class="flex-shrink-0">
             <!-- ClearLane Logo -->
             <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
@@ -47,10 +49,10 @@ const ctaButton = {
             </div>
           </div>
           <div class="hidden sm:block">
-            <div class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+            <div class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
               ClearLane
             </div>
-            <div class="text-sm text-gray-600 -mt-1">
+            <div class="text-sm text-gray-600 dark:text-gray-300 -mt-1">
               Initiative
             </div>
           </div>
@@ -64,8 +66,8 @@ const ctaButton = {
             href={item.href}
             class={`px-3 py-2 text-sm font-medium transition-colors rounded-lg ${
               item.current
-                ? 'text-primary bg-primary/10'
-                : 'text-gray-700 hover:text-primary hover:bg-gray-50'
+                ? 'text-primary-600 bg-primary-100'
+                : 'text-gray-900 dark:text-gray-300 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800'
             }`}
             aria-current={item.current ? 'page' : undefined}
           >
@@ -80,9 +82,9 @@ const ctaButton = {
         <div class="hidden md:block">
           <a
             href={ctaButton.href}
-            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors no-print"
+            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900 transition-colors no-print"
           >
-            🚌 {ctaButton.text}
+{ctaButton.text}
           </a>
         </div>
 
@@ -90,7 +92,7 @@ const ctaButton = {
         <button
           type="button"
           id="mobile-menu-button"
-          class="lg:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-700 hover:text-primary hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary no-print"
+          class="lg:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary no-print"
           aria-controls="mobile-menu"
           aria-expanded="false"
           aria-label="Open main menu"
@@ -128,7 +130,7 @@ const ctaButton = {
     <!-- Mobile navigation menu -->
     <div
       id="mobile-menu"
-      class="lg:hidden hidden border-t border-gray-200 bg-white no-print"
+      class="lg:hidden hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 no-print"
       role="menu"
       aria-orientation="vertical"
       aria-labelledby="mobile-menu-button"
@@ -139,8 +141,8 @@ const ctaButton = {
             href={item.href}
             class={`block px-3 py-2 text-base font-medium transition-colors rounded-lg ${
               item.current
-                ? 'text-primary bg-primary/10'
-                : 'text-gray-700 hover:text-primary hover:bg-gray-50'
+                ? 'text-primary-600 bg-primary-100'
+                : 'text-gray-900 dark:text-gray-300 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800'
             }`}
             role="menuitem"
             aria-current={item.current ? 'page' : undefined}
@@ -150,13 +152,13 @@ const ctaButton = {
         ))}
 
         <!-- Mobile CTA -->
-        <div class="pt-4 border-t border-gray-200">
+        <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
           <a
             href={ctaButton.href}
-            class="block w-full px-3 py-2 text-center text-base font-medium text-white bg-primary hover:bg-primary-dark rounded-lg transition-colors"
+            class="block w-full px-3 py-2 text-center text-base font-medium text-white bg-blue-900 hover:bg-blue-800 rounded-lg transition-colors"
             role="menuitem"
           >
-            🚌 {ctaButton.text}
+{ctaButton.text}
           </a>
         </div>
       </div>
@@ -186,6 +188,10 @@ const ctaButton = {
   header {
     backdrop-filter: blur(8px);
     background-color: rgba(255, 255, 255, 0.95);
+  }
+
+  .dark header {
+    background-color: rgba(15, 23, 42, 0.95);
   }
 
   /* Scroll progress bar */
@@ -218,6 +224,56 @@ const ctaButton = {
     }
   }
 
+  /* Ensure header text is always dark in light mode */
+  header nav a:not(.text-white) {
+    color: #111827 !important;
+  }
+
+  .dark header nav a:not(.text-white) {
+    color: #d1d5db !important;
+  }
+
+  /* Override any inherited color for header navigation - Navy Blue Theme */
+  header nav a {
+    color: #1e3a8a !important; /* Navy blue */
+  }
+
+  .dark header nav a {
+    color: #d1d5db !important;
+  }
+
+  /* Force CTA button text to be visible - VERY DARK Navy Blue */
+  header .bg-blue-900,
+  header .bg-blue-800 {
+    background-color: #0f172a !important; /* Very dark navy blue background */
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+  }
+
+  header .bg-blue-900:hover,
+  header .bg-blue-800:hover {
+    background-color: #1e293b !important; /* Slightly lighter on hover */
+  }
+
+  header .bg-blue-900 *,
+  header .bg-blue-800 *,
+  header .bg-blue-900 a,
+  header .bg-blue-800 a {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure logo text is also dark */
+  header .text-gray-900 {
+    color: #111827 !important;
+  }
+
+  .dark header .text-gray-900 {
+    color: #f9fafb !important;
+  }
+
   /* Print styles */
   @media print {
     header {
@@ -235,6 +291,20 @@ const ctaButton = {
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Initialize theme early to prevent flash
+    const initTheme = () => {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    };
+
+    initTheme();
+
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIconOpen = document.getElementById('menu-icon-open');
@@ -272,7 +342,7 @@ const ctaButton = {
 
       // Close menu when clicking outside
       document.addEventListener('click', (e) => {
-        if (isMenuOpen && !mobileMenuButton.contains(e.target as Node) && !mobileMenu.contains(e.target as Node)) {
+        if (isMenuOpen && !mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
           toggleMenu();
         }
       });
@@ -382,12 +452,12 @@ const ctaButton = {
     // Only enable header hiding on larger screens
     if (window.innerWidth >= 1024) {
       window.addEventListener('scroll', () => {
-        if (!(window as any).ticking) {
+        if (!window.ticking) {
           requestAnimationFrame(() => {
             handleHeaderScroll();
-            (window as any).ticking = false;
+            window.ticking = false;
           });
-          (window as any).ticking = true;
+          window.ticking = true;
         }
       }, { passive: true });
     }

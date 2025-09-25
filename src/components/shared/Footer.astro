@@ -1,0 +1,59 @@
+---
+/**
+ * Footer Component
+ * Reusable footer for all pages
+ */
+---
+
+<footer class="bg-gray-900 dark:bg-gray-950 text-white py-12 print:bg-white print:text-black print:border-t-2 print:border-black">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="md:col-span-2">
+        <div class="flex items-center space-x-3 mb-4">
+          <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <svg viewBox="0 0 24 24" class="w-5 h-5 text-white" fill="currentColor">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" />
+              <path d="M2 17L12 22L22 17" />
+              <path d="M2 12L12 17L22 12" />
+            </svg>
+          </div>
+          <div>
+            <div class="text-lg font-bold">ClearLane Initiative</div>
+            <div class="text-sm text-gray-400">Student-led transit advocacy</div>
+          </div>
+        </div>
+        <p class="text-gray-400 mb-4">
+          Using data science to protect the "rolling study halls" that working students depend on for academic success.
+        </p>
+        <div class="text-sm text-gray-500">
+          Part of the 2025 MTA Datathon by Team Jujutsu Query
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-4">Research</h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><a href="/ACE_Intelligence_System/methodology" class="hover:text-white transition-colors">Methodology</a></li>
+          <li><a href="/ACE_Intelligence_System/findings" class="hover:text-white transition-colors">Key Findings</a></li>
+          <li><a href="/ACE_Intelligence_System/solution" class="hover:text-white transition-colors">Solution Framework</a></li>
+          <li><a href="/ACE_Intelligence_System/#route-analyzer" class="hover:text-white transition-colors">Route Analyzer</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-4">Take Action</h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><a href="/ACE_Intelligence_System/about" class="hover:text-white transition-colors">About the Team</a></li>
+          <li><a href="/ACE_Intelligence_System/resources" class="hover:text-white transition-colors">Resources</a></li>
+          <li><a href="/ACE_Intelligence_System/stakeholders/cuny" class="hover:text-white transition-colors">For CUNY Students</a></li>
+          <li><a href="/ACE_Intelligence_System/stakeholders/city" class="hover:text-white transition-colors">For City Officials</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-400 text-center">
+      <p class="mb-2"><strong>Jujutsu Query team:</strong> Basir A. Samad @ Baruch, Albert Bagdasarov @ Hunter, Caitlin Reyes @ Hunter, Tenzin Namdol @ Baruch</p>
+      <p>&copy; 2025 ClearLane Initiative. Data-driven advocacy for educational equity.</p>
+    </div>
+  </div>
+</footer>
