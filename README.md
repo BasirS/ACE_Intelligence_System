@@ -1,4 +1,4 @@
-# ACE Intelligence System: The ClearLane Initiative 🚌💨
+# ACE Intelligence System: The ClearLane Initiative
 
 We're Team Jujutsu Query, and this project started with something we see every day: CUNY students trying to study on stuck buses. What began as a personal frustration with the BxM10 route turned into a comprehensive investigation that uncovered a massive system failure and led us to build a solution that could give back 7 million student hours to New York City.
 
@@ -8,7 +8,6 @@ We're Team Jujutsu Query, and this project started with something we see every d
 - [Albert Bagdasarov](https://github.com/AlbertBagdos256)
 - [Caitlin Reyes](https://github.com/Caitlin-Reyes)
 - [Tenzin Namdol](https://github.com/Tenzin-Namdol)
-
 ## See Our Work in Action
 
 - **Live Dashboard**: [https://jujutsuquery-mta-analytics.streamlit.app/](https://jujutsuquery-mta-analytics.streamlit.app/)
@@ -126,4 +125,8 @@ This project was developed for the 2025 MTA Datathon at Macaulay Honors College.
 
 ---
 
+<<<<<<< HEAD
 *For detailed documentation of our methodology, data sources, and technical implementation, please refer to our [comprehensive notebooks](notebooks/) and [results documentation](results/txt/).*
+=======
+*For detailed documentation of our methodology, data sources, and technical implementation, please refer to our [comprehensive notebooks](notebooks/) and [results documentation](results/txt/).*
+>>>>>>> a9c8afaccdaf8fa8436f165555e3ea177ee7ce2d
