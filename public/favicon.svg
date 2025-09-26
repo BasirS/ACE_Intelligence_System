@@ -1,10 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <!-- White background circle -->
-  <circle cx="16" cy="16" r="16" fill="white" stroke="#1e3a8a" stroke-width="2"/>
+  <!-- White background circle with thick border -->
+  <circle cx="16" cy="16" r="14" fill="white" stroke="#1e3a8a" stroke-width="4"/>
 
-  <!-- JQ text in dark blue -->
-  <text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1e3a8a">JQ</text>
-
-  <!-- Small subtitle in dark blue -->
-  <text x="16" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="4" fill="#1e3a8a">Team</text>
+  <!-- JQ text in dark blue, centered -->
+  <text x="16" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1e3a8a">JQ</text>
 </svg>
