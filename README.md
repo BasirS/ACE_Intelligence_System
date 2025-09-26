@@ -125,7 +125,6 @@ This project was developed for the 2025 MTA Datathon at Macaulay Honors College.
 
 ---
 
-<<<<<<< HEAD
 *For detailed documentation of our methodology, data sources, and technical implementation, please refer to our [comprehensive notebooks](notebooks/) and [results documentation](results/txt/).*
 =======
 *For detailed documentation of our methodology, data sources, and technical implementation, please refer to our [comprehensive notebooks](notebooks/) and [results documentation](results/txt/).*
